@@ -97,7 +97,13 @@ public class MyCQueue {
                     queue.display();
                     break;
                 case 4:
-                    System.out.println("Exiting...");
+                    System.out.println("..........BYE BYE..................");
+                    System.out.println(".............................^   ^ ");
+                    System.out.println("........................... (>^_^<)");
+                    System.out.println("............................. u u  ");
+                    System.out.println("............................. u u  ");
+                    System.out.println(".............................  s  ");
+                    System.out.println("...................................");
                     break;
                 default:
                     System.out.println("Invalid choice. Please choose again.");

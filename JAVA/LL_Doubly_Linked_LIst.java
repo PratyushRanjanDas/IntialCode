@@ -220,7 +220,13 @@ public class LL_Doubly_Linked_LIst {
                     list.Display();
                     break;
                 case 8:
-                    System.out.println("Exiting...");
+                    System.out.println("..........BYE BYE..................");
+                    System.out.println(".............................^   ^ ");
+                    System.out.println("........................... (>^_^<)");
+                    System.out.println("............................. u u  ");
+                    System.out.println("............................. u u  ");
+                    System.out.println(".............................  s  ");
+                    System.out.println("...................................");
                     break;
                 default:
                     System.out.println("Invalid choice! Please try again.");
