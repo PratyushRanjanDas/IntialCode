@@ -83,6 +83,53 @@ public class T_BinaryTree {
         display2(node.left , level + 1 );
     }
 
+    //to print the tree in pre-order Root->Left->Right
+    public  void preorder()
+    {
+        preorder(root);
+    }
+    public void preorder(Node node)
+    {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.value + " ");
+        preorder(node.left);
+        preorder(node.right);
+        System.out.println();
+    }
+
+    //to print the tree in in-order Left->Node->rigth
+    public  void inorder()
+    {
+        preorder(root);
+    }
+    public void inorder(Node node)
+    {
+        if (node == null) {
+            return;
+        }
+        inorder(node.left);
+        System.out.print(node.value + " ");
+        inorder(node.right);
+
+    }
+
+    //to print the tree in post-order Left->Right->Root
+    public  void postorder()
+    {
+        preorder(root);
+    }
+    public void postorder(Node node)
+    {
+        if (node == null) {
+            return;
+        }
+        postorder(node.left);
+        postorder(node.right);
+        System.out.print(node.value + " ");
+        System.out.println();
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -90,6 +137,15 @@ public class T_BinaryTree {
         tree.populate(scanner);
         tree.display();
         tree.display2();
-        System.out.println("BYE BYE.................. (>^_^<)");
+        tree.preorder();
+        tree.inorder();
+        tree.postorder();
+        System.out.println("..........BYE BYE..................");
+        System.out.println(".............................^   ^ ");
+        System.out.println("........................... (>^_^<)");
+        System.out.println("............................. u u  ");
+        System.out.println("............................. u u  ");
+        System.out.println(".............................  s  ");
+        System.out.println("...................................");
     }
 }
