@@ -39,7 +39,7 @@ public class MyStack {
         else
         //now those stacks have an element we have to pull the top
         {
-            System.out.println(STR."the deleted element is \{Stack[Top]}");
+            System.out.println("the deleted element is " +Stack[Top]);
             Top = Top - 1;
         }
     }
@@ -52,7 +52,7 @@ public class MyStack {
         else
         //now to see the top element of stack
         {
-            System.out.println(STR."the current element is \{Stack[Top]}");
+            System.out.println("the current element is" + Stack[Top]);
         }
     }
 
@@ -95,7 +95,13 @@ public class MyStack {
                     Show();
                     break;
                 case 5:
-                    System.out.println("Exiting...");
+                    System.out.println("..........BYE BYE..................");
+                    System.out.println(".............................^   ^ ");
+                    System.out.println("........................... (>^_^<)");
+                    System.out.println("............................. u u  ");
+                    System.out.println("............................. u u  ");
+                    System.out.println(".............................  s  ");
+                    System.out.println("...................................");
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice.");

@@ -23,19 +23,19 @@ public class T_BinaryTree {
     //for creating a tree
     public void populate(Scanner scanner, Node node) {
         //for creating the left side of node as it in preorder traverse
-        System.out.print(STR." Do you want to create a Node on left of \{node.value}"+": ");
+        System.out.print(" Do you want to create a Node on left of"+node.value+": ");
         boolean left = scanner.nextBoolean();
         if (left) {
-            System.out.print(STR."Enter the left node \{node.value}"+": ");
+            System.out.print("Enter the left node" + node.value+": ");
             int value = scanner.nextInt();
             node.left  = new Node(value);
             populate(scanner,  node.left );
         }
         //for creating the right side of node as it in preorder traverse
-        System.out.print(STR." Do you want to create a Node on right of \{node.value}"+": ");
+        System.out.print(" Do you want to create a Node on right of" + node.value+": ");
         boolean right = scanner.nextBoolean();
         if (right) {
-            System.out.print(STR."Enter the right node \{node.value}"+": ");
+            System.out.print("Enter the right node "+node.value+": ");
             int value = scanner.nextInt();
             node.right  = new Node(value);
             populate(scanner,  node.right );
