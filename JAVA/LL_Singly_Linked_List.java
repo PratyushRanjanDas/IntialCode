@@ -21,92 +21,171 @@ public class LL_Singly_Linked_List {
         }
     }
 
-         void insertBegin(int value)
-         {
-             //node creation
-             Node node = new Node(value);
-             //if head is null
-             if(head == null) {
-                 head=node;
-                 tail=head;
-             }
-             //if there is already a head
-             else
-             {
-                 node.next=head;
-                 head=node;
-             }
-             size++;
-         }
+    void insertBegin(int value)
+    {
+     //node creation
+        Node node = new Node(value);
+     //if head is null
+        if(head == null) 
+        {
+            head=node;
+            tail=head;
+        }
+     //if there is already a head
+        else
+        {
+            node.next=head;
+            head=node;
+        }
+        size++;
+    }
 
-         void insertEnd(int value)
-         {
-             //node creation
-             Node node = new Node(value);
-             //if theis is the first node
-             if (head == null) {
-                 head=node;
-                 tail=head;
-             }
-             //it adds the node at end
-             else{
-                 tail.next=node;
-                 tail=node;
-             }
-             size++;
-         }
+    void insertEnd(int value)
+    {
+     //node creation
+        Node node = new Node(value);
+    //if theis is the first node
+        if (head == null) 
+        {
+            head=node;
+            tail=head;
+        }
+    //it adds the node at end
+        else
+        {
+            tail.next=node;
+            tail=node;
+        }
+        size++;
+        }
 
-         void insertPos(int value, int pos){
-             if (pos < 1 || pos > size) {
-                 System.out.println("invalid position");
-                 return;
-             }
-             //if the position is at begin
-             else if (pos==0)
-                 insertBegin(value);
-             //if the position is at end
-             else if (pos==size)
-                 insertEnd(value);
-             else
-             {
-                 //traverse a node temp to the position so the node can direct to it
-                 Node temp = head;
-                 for (int i = 1; i < pos-1 ; i++)
-                     temp=temp.next;
-                 Node node = new Node(value);
-                 node.next = temp.next;
-                 temp.next=node;
-                 size++;
-             }
-         }
-
-         void Display(){
+    void insertPos(int value, int pos)
+    {
+        if (pos < 1 || pos > size) 
+        {
+            System.out.println("invalid position");
+            return;
+        }
+    //if the position is at begin
+        else if (pos==0)
+            insertBegin(value);
+    //if the position is at end
+        else if (pos==size)
+            insertEnd(value);
+        else
+        {
+    //traverse a node temp to the position so the node can direct to it
             Node temp = head;
-             System.out.print("[");
-             int x = size;
-             //while, so it can print the tail before loop break
-             while (temp != null){
-                System.out.print(" " + temp.value);
+            for (int i = 1; i < pos-1 ; i++)
                 temp=temp.next;
-            }
-             System.out.println(" ]");
-         }
+            Node node = new Node(value);
+            node.next = temp.next;
+            temp.next=node;
+            size++;
+        }
+    }
 
-         void deleteBegin()
-         {
-             if (head == null) {
-                 System.out.println("linked list underflow");
-             return;
-             }
-             System.out.println("Deleted Element " + head.value);
-             Node temp = head;
-             head = head.next;
-             temp.next=null;
-             if (head == null) {
-                 tail = null;
-             }
-             size--;
-         }
+    void insertRec(int value , int pos )
+    {
+        if (pos <  0 || pos > size) 
+        {
+            System.out.println("invalid position");
+            return;
+        }
+        Scanner scan = new Scanner(System.in);
+        if(pos == 0)
+        {
+            Node node = new Node(value);
+            node.next = head;
+            head = node;
+            size++;
+            System.out.println("do u want to move to next node or stop here [if yes true if no false]:");
+            System.out.print("Enter true or false: ");
+            String input = scan.nextLine();
+            boolean x = Boolean.parseBoolean(input);
+            if (x) {
+                System.out.println("enter new node :");
+                int v = scan.nextInt();
+                System.out.println("enter your position");
+                int p = scan.nextInt();
+                insertRec(v, p);
+            }
+            else return;
+        }
+        else if(pos == size)
+        {
+            Node node = new Node(value);
+            tail.next = node;
+            tail = node;
+            size++;
+            System.out.println("do u want to move to next node or stop here [if yes true if no false]:");
+            System.out.print("Enter true or false: ");
+            String input = scan.nextLine();
+            boolean x = Boolean.parseBoolean(input);
+            if (x) {
+                System.out.println("enter new node :");
+                int v = scan.nextInt();
+                System.out.println("enter your position");
+                int p = scan.nextInt();
+                insertRec(v, p);
+            }
+            else return;
+        }
+        else
+        {
+            Node temp = head;
+            for (int i = 1; i < pos-1 ; i++)
+                temp=temp.next;
+            Node node = new Node(value);
+            node.next = temp.next;
+            temp.next=node;
+            size++;
+            System.out.println("do u want to move to next node or stop here [if yes true if no false]:");
+            System.out.print("Enter true or false: ");
+            String input = scan.nextLine();
+            boolean x = Boolean.parseBoolean(input);
+            if (x) {
+                System.out.println("enter new node :");
+                int v = scan.nextInt();
+                System.out.println("enter your position");
+                int p = scan.nextInt();
+                insertRec(v, p);
+            }
+            else return;
+        }
+    }
+
+    void Display()
+    {
+        Node temp = head;
+        System.out.print("[");
+        int x = size;
+    //while, so it can print the tail before loop break
+        while (temp != null)
+        {
+            System.out.print(" " + temp.value);
+            temp=temp.next;
+        }
+        System.out.println(" ]");
+    }
+
+    void deleteBegin()
+    {
+        if (head == null) 
+        {
+            System.out.println("linked list underflow");
+            return;
+        }
+        System.out.println("Deleted Element " + head.value);
+        Node temp = head;
+        head = head.next;
+        temp.next=null;
+        if (head == null) 
+        {
+            tail = null;
+        }
+        size--;
+        }
 
     void deleteEnd(){
         if (head == null) {
@@ -115,8 +194,8 @@ public class LL_Singly_Linked_List {
         }
         //head == tail mean first ele
         if (size == 1) {
-             deleteBegin();
-             return;
+            deleteBegin();
+            return;
         }
         else
         {
@@ -136,7 +215,7 @@ public class LL_Singly_Linked_List {
             System.out.println("linked list underflow");
             return;
         }
-        if (pos < 1 || pos > size) {
+        if (pos < 0 || pos > size) {
             System.out.println("invalid position");
             return;
         }
@@ -198,7 +277,8 @@ public class LL_Singly_Linked_List {
         System.out.println("6. Delete from Position");
         System.out.println("7. Display List");
         System.out.println("8. Reverse");
-        System.out.println("9. Exit");
+        System.out.println("9. RecInsert");
+        System.out.println("10. Exit");
 
         do {
             System.out.print("Enter your choice: ");
@@ -239,6 +319,12 @@ public class LL_Singly_Linked_List {
                     list.Reverse();
                     break;
                 case 9:
+                System.out.print("Enter value to insert and position: ");
+                value = scanner.nextInt();
+                position = scanner.nextInt();
+                list.insertRec(value, position);
+                break;
+                case 10:
                     System.out.println("..........BYE BYE..................");
                     System.out.println(".............................^   ^ ");
                     System.out.println("........................... (>^_^<)");

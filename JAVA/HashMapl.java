@@ -120,7 +120,7 @@ public class HashMapl<K, V> {
         map.put("Karan", 99);
         map.put("Rahul", 94);
 
-        // System.out.println(map.get("Karan"));
+        System.out.println(map.get("Karan"));
         // System.out.println(map.getOrDefault("Apoorv", 78));
         System.out.println(map.containsKey("Karan"));
 
@@ -133,6 +133,7 @@ public class HashMapl<K, V> {
         set.add(2);
 
         System.out.println(set);
+        System.out.println(set.contains(9));
     }
 
 }
