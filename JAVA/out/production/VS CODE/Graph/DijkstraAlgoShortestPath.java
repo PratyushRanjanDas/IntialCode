@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class DijkstraAlgoShortestPath {
     public static class Edge {
@@ -28,6 +29,68 @@ public class DijkstraAlgoShortestPath {
             return this.dist - p2.dist; // ascending order priority
         }
     }
+
+    public static void longestPath(ArrayList<Edge>[] graph, int src, int v) {
+    int[] dist = new int[v];
+    boolean[] vis = new boolean[v];
+
+    // Initialize distances to all nodes as negative infinity except for the source node
+    for (int i = 0; i < v; i++) {
+        dist[i] = (i == src) ? 0 : Integer.MIN_VALUE;
+    }
+
+    // Perform topological sort
+    Stack<Integer> topoStack = new Stack<>();
+    for (int i = 0; i < v; i++) {
+        if (!vis[i]) {
+            topologicalSort(graph, i, vis, topoStack);
+        }
+    }
+
+    // Process nodes in topological order
+    while (!topoStack.isEmpty()) {
+        int u = topoStack.pop();
+        
+        // Relaxation step for all adjacent nodes
+        if (dist[u] != Integer.MIN_VALUE) {
+            for (Edge edge : graph[u]) {
+                int vNode = edge.des;
+                int weight = edge.wei;
+
+                // Update the distance if a longer path is found
+                if (dist[u] + weight > dist[vNode]) {
+                    dist[vNode] = dist[u] + weight;
+                }
+            }
+        }
+    }
+
+    // Print the longest distances
+    System.out.println("Longest distances from source " + src + ":");
+    for (int i = 0; i < v; i++) {
+        if (dist[i] == Integer.MIN_VALUE) {
+            System.out.println("Node " + i + ": Unreachable");
+        } else {
+            System.out.println("Node " + i + ": " + dist[i]);
+        }
+    }
+}
+
+// Helper method for topological sort
+private static void topologicalSort(ArrayList<Edge>[] graph, int node, boolean[] vis, Stack<Integer> stack) {
+    vis[node] = true;
+
+    for (Edge edge : graph[node]) {
+        if (!vis[edge.des]) {
+            topologicalSort(graph, edge.des, vis, stack);
+        }
+    }
+
+    stack.push(node);
+}
+
+
+
 
     public static void dijkstra(ArrayList<Edge> graph[], int src, int v) {
         PriorityQueue<Pair> pq = new PriorityQueue<>();
@@ -125,6 +188,7 @@ public class DijkstraAlgoShortestPath {
         createGraphW(graph);
         int src = 0; // Starting node
 
+        longestPath(graph, src, v);
         bellmanford(graph, src, v);
     }
 }
